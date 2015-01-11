@@ -6,7 +6,7 @@ is **c**offee-script, **j**ade, **s**tylus, **b**[ower_components](https://www.n
 
 ```bash
 $ git clone https://github.com/59naga/cjsbl.git
-$ cd cjsbl/last
+$ cd cjsbl/0.last
 $ npm start
 ```
 
