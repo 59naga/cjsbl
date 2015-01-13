@@ -12,8 +12,8 @@ gulp.task 'coffee-script',->
   browserify= require 'browserify'
   source= require 'vinyl-source-stream'
   browserify
-      entries:"./.coffee/index.coffee"
-      extensions:'.coffee'
+      entries: "./.coffee/index.coffee"
+      extensions: '.coffee'
     .transform 'coffeeify'
     .bundle()
     .pipe source 'index.js'
@@ -23,21 +23,21 @@ gulp.task 'jade',->
   jade= require 'gulp-jade'
   gulp.src [".jade/**/*.jade","!.jade/_**/*.jade"]
     .pipe jade
-      basedir:"#{process.cwd()}/.jade"
-      pretty:true
+      basedir: "#{process.cwd()}/.jade"
+      pretty: true
     .pipe gulp.dest cjsbl.public_html
 
 gulp.task 'stylus',->
   stylus= require 'gulp-stylus'
   pleeease= require 'gulp-pleeease'
   gulp.src ".styl/index.styl"
-    .pipe stylus()
-    .pipe pleeease {
-      minifier:false
+    .pipe stylus
+      use: require('nib')()
+      compress: false
+    .pipe pleeease
+      minifier: false
       autoprefixer:
-        browsers:
-          ['last 3 version','android 2.3']
-    }
+        browsers: ['last 3 version','android 2.3']
     .pipe gulp.dest cjsbl.public_html
 
 gulp.task 'bower',->
@@ -46,9 +46,10 @@ gulp.task 'bower',->
   concat= require 'gulp-concat'
   gulp.src main
     paths:
-      bowerDirectory:'bower_components'
-      bowerJson:'bower.json'
-  .pipe jsfy()
+      bowerDirectory: 'bower_components'
+      bowerJson: 'bower.json'
+  .pipe jsfy
+    dataurl: true
   .pipe concat 'bower_components.js'
   .pipe gulp.dest cjsbl.public_html
 
@@ -61,6 +62,7 @@ gulp.task 'livereload',->
     root: cjsbl.public_html
   
   watch= require 'gulp-watch'
+
   watch ".coffee/**/*.coffee",->
     gulp.start 'coffee-script'
 
@@ -72,6 +74,14 @@ gulp.task 'livereload',->
 
   watch "bower.json",->
     gulp.start 'bower'
+
+  watch "gulpfile.coffee",->
+    console.error """
+    \u001b[31m
+    << Please re-gulp. Because gulpfile.coffee was changed >>
+    \u001b[0m
+    """
+    process.kill process.pid,'SIGINT'
 
   gulp.src "#{cjsbl.public_html}/**"
     .pipe watch "#{cjsbl.public_html}/**"
