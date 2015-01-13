@@ -51,9 +51,9 @@ $ open public_html/index.html
   public_html= 'public_html'
 
   gulp= require 'gulp'
-  gulp.task 'default',['coffee','jade','stylus']
+  gulp.task 'default',['coffee-script','jade','stylus']
 
-  gulp.task 'coffee',->
+  gulp.task 'coffee-script',->
     coffee= require 'gulp-coffee'
     gulp.src ".coffee/index.coffee"
       .pipe coffee()
@@ -98,7 +98,7 @@ $ open public_html/index.html
   gulp.task 'watch',->
     watch= require 'gulp-watch'
     watch ".coffee/**/*.coffee",->
-      gulp.start 'coffee'
+      gulp.start 'coffee-script'
 
     watch ".jade/**/*.jade",->
       gulp.start 'jade'
@@ -147,23 +147,6 @@ $ npm start
 livereload.serverは、引数のrootを監視する。`Server started http://localhost:8080`とメッセージを返すので、URLをブラウザで開く。
 
 *───これであなたも Getting started.*
-
-
-# [4.コンパイラの細かい設定](https://github.com/59naga/cjsbl/tree/master/0.last)
-<!-- ところがトムは実際にコーディングを始めてみて、さらに快適な環境を望むようになった。
-* coffee
-  * ファイルを分割して、[require](https://github.com/59naga/app.jip)で読み込み、１ファイルにまとめる。
-* jade
-  * ヘッダー、フッターなどの共通部を使い回す。ただし、公開するhtmlのファイル構造をイメージしやすいように、.jadeの構造を使いまわす。
-* stylus
-  * ページごとの局所的なデザインを、jadeと同じファイル構造に書く。初期設定やmixinをコンパイルせず、importして使う。
-* bower
-  * `$ bower install jquery moment animate.css`して、すぐに使いたい。
- -->
-![](https://qiita-image-store.s3.amazonaws.com/0/28576/02085a0f-c57f-c933-661c-f0b7d496ddc2.png)
-
-# [5.ライブラリの管理と圧縮](https://github.com/59naga/cjsbl/tree/master/0.last)
-![](https://qiita-image-store.s3.amazonaws.com/0/28576/02085a0f-c57f-c933-661c-f0b7d496ddc2.png)
 
 # License
   MIT
