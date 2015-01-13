@@ -1,9 +1,9 @@
 public_html= 'public_html'
 
 gulp= require 'gulp'
-gulp.task 'default',['coffee','jade','stylus','watch','livereload']
+gulp.task 'default',['coffee-script','jade','stylus','watch','livereload']
 
-gulp.task 'coffee',->
+gulp.task 'coffee-script',->
   coffee= require 'gulp-coffee'
   gulp.src ".coffee/index.coffee"
     .pipe coffee()
@@ -17,7 +17,7 @@ gulp.task 'jade',->
 
 gulp.task 'stylus',->
   stylus= require 'gulp-stylus'
-  gulp.src ".stylus/index.stylus"
+  gulp.src ".styl/index.styl"
     .pipe stylus()
     .pipe gulp.dest public_html
 
@@ -25,12 +25,12 @@ gulp.task 'stylus',->
 gulp.task 'watch',->
   watch= require 'gulp-watch'
   watch ".coffee/**/*.coffee",->
-    gulp.start 'coffee'
+    gulp.start 'coffee-script'
 
   watch ".jade/**/*.jade",->
     gulp.start 'jade'
 
-  watch ".stylus/**/*.stylus",->
+  watch ".styl/**/*.styl",->
     gulp.start 'stylus'
 
 gulp.task 'livereload',->

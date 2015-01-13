@@ -19,8 +19,8 @@ $ npm start
       index.coffee
   .jade
       index.jade
-  .stylus
-      index.stylus
+  .styl
+      index.styl
 
   public_html
 ```
@@ -67,7 +67,7 @@ $ open public_html/index.html
 
   gulp.task 'stylus',->
     stylus= require 'gulp-stylus'
-    gulp.src ".stylus/index.stylus"
+    gulp.src ".styl/index.styl"
       .pipe stylus()
       .pipe gulp.dest public_html
   ```
@@ -103,7 +103,7 @@ $ open public_html/index.html
     watch ".jade/**/*.jade",->
       gulp.start 'jade'
 
-    watch ".stylus/**/*.stylus",->
+    watch ".styl/**/*.styl",->
       gulp.start 'stylus'
   ```
 

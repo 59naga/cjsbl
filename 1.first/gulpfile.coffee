@@ -1,9 +1,9 @@
 public_html= 'public_html'
 
 gulp= require 'gulp'
-gulp.task 'default',['coffee','jade','stylus']
+gulp.task 'default',['coffee-script','jade','stylus']
 
-gulp.task 'coffee',->
+gulp.task 'coffee-script',->
   coffee= require 'gulp-coffee'
   gulp.src ".coffee/index.coffee"
     .pipe coffee()
@@ -17,6 +17,6 @@ gulp.task 'jade',->
 
 gulp.task 'stylus',->
   stylus= require 'gulp-stylus'
-  gulp.src ".stylus/index.stylus"
+  gulp.src ".styl/index.styl"
     .pipe stylus()
     .pipe gulp.dest public_html

@@ -4,11 +4,11 @@ cjsbl=
   public_html: 'public_html'
 
 gulp= require 'gulp'
-gulp.task 'default',['coffee','jade','stylus','bower'],->
+gulp.task 'default',['coffee-script','jade','stylus','bower'],->
   gulp.start 'livereload'
   gulp.start '> public_html'
 
-gulp.task 'coffee',->
+gulp.task 'coffee-script',->
   browserify= require 'browserify'
   source= require 'vinyl-source-stream'
   browserify
@@ -62,7 +62,7 @@ gulp.task 'livereload',->
   
   watch= require 'gulp-watch'
   watch ".coffee/**/*.coffee",->
-    gulp.start 'coffee'
+    gulp.start 'coffee-script'
 
   watch ".jade/**/*.jade",->
     gulp.start 'jade'
