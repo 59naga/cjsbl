@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "coffee-script": "^1.8.0",
-    "gulp": "^3.8.10",
+    "gulp": "3.8.8",
 
     "gulp-coffee": "^2.2.0",
     "gulp-jade": "^0.10.0",
