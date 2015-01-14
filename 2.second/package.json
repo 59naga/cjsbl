@@ -10,6 +10,6 @@
     "gulp-watch": "^3.0.0"
   },
   "scripts": {
-    "start": "npm install && gulp"
+    "start": "npm install && gulp --require coffee-script/register"
   }
 }
